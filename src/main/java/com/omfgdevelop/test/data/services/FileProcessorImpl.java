@@ -1,7 +1,6 @@
 package com.omfgdevelop.test.data.services;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -33,8 +32,6 @@ public class FileProcessorImpl implements FileProcessor {
 
         FileWriter writer;
         try {
-
-
             writer = new FileWriter(file);
             System.out.println("Current path " + file.getAbsoluteFile());
             BufferedWriter bufferedWriter = new BufferedWriter(writer);

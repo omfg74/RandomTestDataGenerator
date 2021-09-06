@@ -6,6 +6,11 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
+
+
+/**
+ * Интерфейс предоставляющий доступ к записи файла
+ */
 public interface FileProcessor {
 
     void writeToFile(String preparedString, String generatorName) throws IOException;

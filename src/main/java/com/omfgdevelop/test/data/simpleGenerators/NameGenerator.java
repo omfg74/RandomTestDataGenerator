@@ -2,9 +2,16 @@ package com.omfgdevelop.test.data.simpleGenerators;
 
 import java.util.Random;
 
+/**
+ * Генератор случайных имен.
+ * Тварит полный абсурд. Есть смысл доработать до генератора случайных слогов. Будет выглядеть более осмысленно.
+ * Тут нужен для примера использования такой логики.
+ */
 public class NameGenerator implements SimpleEntityGenerator<String> {
 
-
+    /**
+     * Простой пример метода для вызова процесса случайной генерации
+     */
     @Override
     public String generateRandom() {
 

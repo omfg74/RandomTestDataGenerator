@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MixedGenerator extends BaseGenerator implements SimpleTestDataGenerator {
+/**
+ * Реализация смешанного генератора. Часть значений достается из словаря, часть генерируется случайно
+ */
+public class MixedGenerator extends BaseGenerator {
 
     private final List<String> names;
 
@@ -39,6 +42,11 @@ public class MixedGenerator extends BaseGenerator implements SimpleTestDataGener
         this.groupGenerator = groupGenerator;
     }
 
+    /**
+     * метод инициирующий генерацию
+     * @param iteration количество создаваемых объектов
+     * @throws IOException исключение
+     */
     @Override
     public void generate(int iteration) throws IOException {
         List<Result> results = new ArrayList<>();
@@ -65,7 +73,9 @@ public class MixedGenerator extends BaseGenerator implements SimpleTestDataGener
             results.add(result);
         }
 
+        //Запись в файл разных объектов
         writeToFileSeparate(results);
+        //Запись в файл как список объектов
         writeFileAsJsonList(results);
     }
 

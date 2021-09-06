@@ -6,6 +6,9 @@ import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Генератор случайных дат с ограничениями до 100 лет
+ */
 public class DateGenerator implements SimpleEntityGenerator<String> {
     @Override
     public String generateRandom() {

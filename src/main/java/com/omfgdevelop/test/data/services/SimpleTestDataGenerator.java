@@ -5,13 +5,29 @@ import com.omfgdevelop.test.data.model.Result;
 import java.io.IOException;
 import java.util.List;
 
-public interface SimpleTestDataGenerator {
+/**
+ * Интерфейс предоставляющий доступ к различным реализациям генератора
+ */
+public interface SimpleTestDataGenerator<T> {
 
-    void generate(int iteration) throws IOException;
 
-    void writeToConsole(Result result);
+    /**
+     * Метод записывает занные в консоль
+     * @param result
+     */
+    void writeToConsole(T result);
 
-    void writeToFileSeparate(List<Result> resultList) throws IOException;
+    /**
+     * Метод записывает данные в файл как отдельные объекты
+     * @param resultList входные параметры
+     * @throws IOException исключение
+     */
+    void writeToFileSeparate(List<T> resultList) throws IOException;
 
-    void writeFileAsJsonList(List<Result> resultList) throws IOException;
+    /**
+     * Метод записывает данные в файл как список объектов
+     * @param resultList входные параметры
+     * @throws IOException исключение
+     */
+    void writeFileAsJsonList(List<T> resultList) throws IOException;
 }

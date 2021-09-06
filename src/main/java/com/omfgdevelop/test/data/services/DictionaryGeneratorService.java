@@ -1,6 +1,5 @@
 package com.omfgdevelop.test.data.services;
 
-import com.google.gson.Gson;
 import com.omfgdevelop.test.data.model.Result;
 import com.omfgdevelop.test.data.simpleGenerators.SimpleDictionaryStringGenerator;
 import com.omfgdevelop.test.data.simpleGenerators.UniversalDictionaryStringGenerator;
@@ -9,7 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DictionaryGeneratorService extends BaseGenerator implements SimpleTestDataGenerator  {
+/**
+ * Реализация псевдослучайного генератора по словарям. Просто выбирает случайное значение из словарей
+ */
+public class DictionaryGeneratorService extends BaseGenerator {
 
     private final List<String> names;
 
@@ -17,11 +19,11 @@ public class DictionaryGeneratorService extends BaseGenerator implements SimpleT
 
     private final List<String> patronymics;
 
-    private List<String> birthDates;
+    private final List<String> birthDates;
 
-    private List<String> phones;
+    private final List<String> phones;
 
-    private List<String> groupNames;
+    private final List<String> groupNames;
 
 
     private final SimpleDictionaryStringGenerator<String> dictionaryStringGenerator = new UniversalDictionaryStringGenerator();
@@ -38,6 +40,11 @@ public class DictionaryGeneratorService extends BaseGenerator implements SimpleT
     }
 
 
+    /**
+     * Метод инициирующий генерацию
+     * @param iteration количество создаваемых объектов
+     * @throws IOException исключение
+     */
     @Override
     public void generate(int iteration) throws IOException {
         List<Result> results = new ArrayList<>();
@@ -61,7 +68,9 @@ public class DictionaryGeneratorService extends BaseGenerator implements SimpleT
             results.add(result);
         }
 
+        //Запись в файл разных объектов
         writeToFileSeparate(results);
+        //Запись в файл как список объектов
         writeFileAsJsonList(results);
     }
 

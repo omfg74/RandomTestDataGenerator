@@ -1,7 +1,8 @@
 package com.omfgdevelop.test.data.model;
 
-import java.time.LocalDate;
-
+/**
+ * Простая модель для демонстрации работы
+ */
 public class Result {
 
     private String name;

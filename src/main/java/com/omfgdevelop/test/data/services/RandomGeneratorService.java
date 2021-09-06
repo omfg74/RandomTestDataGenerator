@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomGeneratorService extends BaseGenerator implements SimpleTestDataGenerator {
+/**
+ * Реализация сервиса-генератора случайных значений. Все генерируется случайным образом
+ */
+public class RandomGeneratorService extends BaseGenerator {
 
     private final SimpleEntityGenerator<String> phoneGenerator;
 
@@ -25,7 +28,11 @@ public class RandomGeneratorService extends BaseGenerator implements SimpleTestD
         this.fileProcessor = fileProcessor;
     }
 
-
+    /**
+     * метод инициирующий генерацию
+     * @param iteration количество создаваемых объектов
+     * @throws IOException исключение
+     */
     @Override
     public void generate(int iteration) throws IOException {
         List<Result> results = new ArrayList<>();
@@ -51,8 +58,9 @@ public class RandomGeneratorService extends BaseGenerator implements SimpleTestD
             writeToConsole(result);
             results.add(result);
         }
-
+        //Запись в файл разных объектов
         writeToFileSeparate(results);
+        //Запись в файл как список объектов
         writeFileAsJsonList(results);
     }
 
