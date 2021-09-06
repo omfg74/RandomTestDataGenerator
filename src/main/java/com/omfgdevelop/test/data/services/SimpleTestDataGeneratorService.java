@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Интерфейс предоставляющий доступ к различным реализациям генератора
  */
-public interface SimpleTestDataGenerator<T> {
+public interface SimpleTestDataGeneratorService<T> {
 
 
     /**

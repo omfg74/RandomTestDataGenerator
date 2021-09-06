@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Базовый класс генератора, ничего не генерирует. Отвечает за постобработку
  */
-public abstract class BaseGenerator implements SimpleTestDataGenerator<Result> {
+public abstract class BaseGeneratorService implements SimpleTestDataGeneratorService<Result> {
 
     protected FileProcessor fileProcessor;
 

@@ -1,16 +1,30 @@
 package com.omfgdevelop.test.data.services;
 
+import com.google.gson.Gson;
 import com.omfgdevelop.test.data.model.Result;
+import com.omfgdevelop.test.data.simpleGenerators.SimpleDictionaryStringGenerator;
 import com.omfgdevelop.test.data.simpleGenerators.SimpleEntityGenerator;
+import com.omfgdevelop.test.data.simpleGenerators.UniversalDictionaryStringGenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Реализация сервиса-генератора случайных значений. Все генерируется случайным образом
+ * Реализация смешанного генератора. Часть значений достается из словаря, часть генерируется случайно
  */
-public class RandomGeneratorService extends BaseGenerator {
+public class MixedGeneratorService extends BaseGeneratorService {
+
+    private final List<String> names;
+
+    private final List<String> lastNames;
+
+    private final List<String> patronymics;
+
+    private final Gson gson = new Gson();
+
+
+    private final SimpleDictionaryStringGenerator<String> dictionaryStringGenerator = new UniversalDictionaryStringGenerator();
 
     private final SimpleEntityGenerator<String> phoneGenerator;
 
@@ -18,14 +32,14 @@ public class RandomGeneratorService extends BaseGenerator {
 
     private final SimpleEntityGenerator<String> groupGenerator;
 
-    private final SimpleEntityGenerator<String> nameGenerator;
-
-    public RandomGeneratorService(SimpleEntityGenerator<String> phoneGenerator, SimpleEntityGenerator<String> dateGenerator, SimpleEntityGenerator<String> groupGenerator, SimpleEntityGenerator<String> nameGenerator, FileProcessor fileProcessor) {
+    public MixedGeneratorService(List<String> names, List<String> lastNames, List<String> patronymics, FileProcessor fileProcessor, SimpleEntityGenerator<String> phoneGenerator, SimpleEntityGenerator<String> dateGenerator, SimpleEntityGenerator<String> groupGenerator) {
+        this.names = names;
+        this.lastNames = lastNames;
+        this.patronymics = patronymics;
+        this.fileProcessor = fileProcessor;
         this.phoneGenerator = phoneGenerator;
         this.dateGenerator = dateGenerator;
         this.groupGenerator = groupGenerator;
-        this.nameGenerator = nameGenerator;
-        this.fileProcessor = fileProcessor;
     }
 
     /**
@@ -38,9 +52,9 @@ public class RandomGeneratorService extends BaseGenerator {
         List<Result> results = new ArrayList<>();
 
         for (int i = 0; i < iteration; i++) {
-            String name = nameGenerator.generateRandom();
-            String lastName = nameGenerator.generateRandom();
-            String patronymic = nameGenerator.generateRandom();
+            String name = dictionaryStringGenerator.generateFromDictionary(names);
+            String lastName = dictionaryStringGenerator.generateFromDictionary(lastNames);
+            String patronymic = dictionaryStringGenerator.generateFromDictionary(patronymics);
 
             String phone = phoneGenerator.generateRandom();
 
@@ -58,6 +72,7 @@ public class RandomGeneratorService extends BaseGenerator {
             writeToConsole(result);
             results.add(result);
         }
+
         //Запись в файл разных объектов
         writeToFileSeparate(results);
         //Запись в файл как список объектов

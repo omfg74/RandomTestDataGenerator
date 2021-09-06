@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Реализация псевдослучайного генератора по словарям. Просто выбирает случайное значение из словарей
  */
-public class DictionaryGeneratorService extends BaseGenerator {
+public class DictionaryGeneratorServiceService extends BaseGeneratorService {
 
     private final List<String> names;
 
@@ -29,7 +29,7 @@ public class DictionaryGeneratorService extends BaseGenerator {
     private final SimpleDictionaryStringGenerator<String> dictionaryStringGenerator = new UniversalDictionaryStringGenerator();
 
 
-    public DictionaryGeneratorService(List<String> names, List<String> lastNames, List<String> patronymics, List<String> birthDates, List<String> phones, List<String> groupName, FileProcessor fileProcessor) {
+    public DictionaryGeneratorServiceService(List<String> names, List<String> lastNames, List<String> patronymics, List<String> birthDates, List<String> phones, List<String> groupName, FileProcessor fileProcessor) {
         this.names = names;
         this.lastNames = lastNames;
         this.patronymics = patronymics;

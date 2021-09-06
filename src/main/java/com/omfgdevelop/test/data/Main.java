@@ -26,13 +26,13 @@ public class Main {
         List<String> birthDates = fileProcessor.readFileToString("birthDates.txt");
 
 
-        BaseGenerator dictionaryDataGenerator = new DictionaryGeneratorService(names, lastNames, patronymics, birthDates, phones, groups, fileProcessor);
+        BaseGeneratorService dictionaryDataGenerator = new DictionaryGeneratorServiceService(names, lastNames, patronymics, birthDates, phones, groups, fileProcessor);
         dictionaryDataGenerator.generate(ITERATIONS);
 
-        BaseGenerator mixedGenerator = new MixedGenerator(names, lastNames, patronymics, fileProcessor, new PhoneGenerator(), new DateGenerator(), new GroupGenerator());
+        BaseGeneratorService mixedGenerator = new MixedGeneratorService(names, lastNames, patronymics, fileProcessor, new PhoneGenerator(), new DateGenerator(), new GroupGenerator());
         mixedGenerator.generate(ITERATIONS);
 
-        BaseGenerator randomGenerator = new RandomGeneratorService(new PhoneGenerator(), new DateGenerator(), new GroupGenerator(), new NameGenerator(), fileProcessor);
+        BaseGeneratorService randomGenerator = new RandomGeneratorServiceService(new PhoneGenerator(), new DateGenerator(), new GroupGenerator(), new NameGenerator(), fileProcessor);
         randomGenerator.generate(ITERATIONS);
     }
 
