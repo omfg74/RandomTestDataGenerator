@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -17,6 +18,11 @@ public class FileProcessorImpl implements FileProcessor {
     public void writeToFile(String preparedString, String generatorName) throws IOException {
         Path currentRelativePath = Paths.get("");
         String path = currentRelativePath.toAbsolutePath().toString() + "/generatedResult/";
+        Path pathLocal = Paths.get(path);
+        if (!Files.exists(pathLocal)){
+           File f = new File(String.valueOf(pathLocal));
+           f.mkdir();
+        }
 
         File file = new File(path + generatorName + "_result_file_name.txt");
         if (file.exists()) {
