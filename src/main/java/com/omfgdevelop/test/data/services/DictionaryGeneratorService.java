@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Реализация псевдослучайного генератора по словарям. Просто выбирает случайное значение из словарей
+ * Реализация псевдослучайного сервиса-генератора по словарям. Просто выбирает случайное значение из словарей
  */
-public class DictionaryGeneratorServiceService extends BaseGeneratorService {
+public class DictionaryGeneratorService extends BaseGeneratorService {
 
     private final List<String> names;
 
@@ -29,7 +29,7 @@ public class DictionaryGeneratorServiceService extends BaseGeneratorService {
     private final SimpleDictionaryStringGenerator<String> dictionaryStringGenerator = new UniversalDictionaryStringGenerator();
 
 
-    public DictionaryGeneratorServiceService(List<String> names, List<String> lastNames, List<String> patronymics, List<String> birthDates, List<String> phones, List<String> groupName, FileProcessor fileProcessor) {
+    public DictionaryGeneratorService(List<String> names, List<String> lastNames, List<String> patronymics, List<String> birthDates, List<String> phones, List<String> groupName, FileProcessor fileProcessor) {
         this.names = names;
         this.lastNames = lastNames;
         this.patronymics = patronymics;

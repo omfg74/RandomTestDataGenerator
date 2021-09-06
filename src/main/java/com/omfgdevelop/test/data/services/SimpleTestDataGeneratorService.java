@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Интерфейс предоставляющий доступ к различным реализациям генератора
+ * Интерфейс предоставляющий доступ к различным реализациям сервисов генерации
  */
 public interface SimpleTestDataGeneratorService<T> {
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Базовый класс генератора, ничего не генерирует. Отвечает за постобработку
+ * Базовый класс сервиса-генератора, ничего не генерирует. Отвечает за постобработку
  */
 public abstract class BaseGeneratorService implements SimpleTestDataGeneratorService<Result> {
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Реализация смешанного генератора. Часть значений достается из словаря, часть генерируется случайно
+ * Реализация смешанного сервиса генератора. Часть значений достается из словаря, часть генерируется случайно
  */
 public class MixedGeneratorService extends BaseGeneratorService {
 

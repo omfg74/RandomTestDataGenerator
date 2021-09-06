@@ -26,7 +26,7 @@ public class Main {
         List<String> birthDates = fileProcessor.readFileToString("birthDates.txt");
 
 
-        BaseGeneratorService dictionaryDataGenerator = new DictionaryGeneratorServiceService(names, lastNames, patronymics, birthDates, phones, groups, fileProcessor);
+        BaseGeneratorService dictionaryDataGenerator = new DictionaryGeneratorService(names, lastNames, patronymics, birthDates, phones, groups, fileProcessor);
         dictionaryDataGenerator.generate(ITERATIONS);
 
         BaseGeneratorService mixedGenerator = new MixedGeneratorService(names, lastNames, patronymics, fileProcessor, new PhoneGenerator(), new DateGenerator(), new GroupGenerator());
